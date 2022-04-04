@@ -10,7 +10,7 @@ class EncryptedPassword < Password
   end
 
   def value
-    head + micro_hash(20)
+    head + micro_hash(time.to_i) + time.to_s
   end
 
   private
@@ -44,7 +44,7 @@ class EncryptedPassword < Password
 
   # get current minutes
   def time
-    Time.now.min
+    Time.now.sec
   end
 
   # array of letters from a to z

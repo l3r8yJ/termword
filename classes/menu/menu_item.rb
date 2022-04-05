@@ -8,13 +8,12 @@ class MenuItem
   def initialize(title, description, number)
     @title = validate(title)
     @description = validate(description)
-    @number = number
+    @number = validate(number)
   end
 
   private
 
   def validate(arg)
-    arg unless arg.length.zero?
-    throw ArgumentError if arg.nil?
+    arg unless arg.nil?
   end
 end

@@ -26,7 +26,7 @@ class EncryptedPassword < Password
   end
 
   def white_space
-    (time.to_i * 10).to_s + letters[time.to_i / 10] + (time.to_i / 10).to_s
+    "#{time.to_i * 10}#{letters[time.to_i / 10]}#{time.to_i / 10}"
   end
 
   def value_to_array
@@ -38,13 +38,13 @@ class EncryptedPassword < Password
     if position.zero?
       ''
     else
-      (letters[position] + (2**position).to_s) + micro_hash(position - 1)
+      "#{letters[position]}#{2**position}#{micro_hash(position - 1)}"
     end
   end
 
   # get current minutes
   def time
-    Time.now.sec
+    Time.now.min
   end
 
   # array of letters from a to z

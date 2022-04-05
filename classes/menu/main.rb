@@ -20,8 +20,22 @@ class Menu
   def add_item(menu_item)
     @items.push(menu_item) unless menu_item.nil?
   end
+
+  def read_line
+    user_input = gets
+    puts "#{user_input} you're faggot"
+  end
 end
 
-menu = Menu.new(MenuItem.new('Test title', 'test description', 1))
-menu.add_item(MenuItem.new('Test title 2', 'test description 2', 2))
+menu = Menu.new(
+  MenuItem.new(
+    {
+      title: 'Menu',
+      description: 'choose a title by number.',
+      number: 0
+    }
+  )
+)
+
 menu.log_items
+menu.read_line
